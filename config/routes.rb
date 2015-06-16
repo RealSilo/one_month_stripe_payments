@@ -7,8 +7,14 @@ Rails.application.routes.draw do
   #stripe
   resources :charges
 
+  #route for showing products
+  resources :products, only: [:index]
+
   #route for showing purchases
   resources :purchases, only: [:show]
+
+  #route for showing products
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
