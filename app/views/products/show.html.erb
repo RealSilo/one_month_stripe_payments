@@ -1,4 +1,8 @@
-    <section id="content-details" class="row clearfix">
+<% content_for :head do %>
+	<%= image_tag(@product.header_image_name, id: 'content-header-img', alt: "Learn #{@product.title}") %>
+<% end %>
+
+<section id="content-details" class="row clearfix">
         <article id="details-article" class="col-sm-8">
             <h1 id="article-title"><%= @product.title %> <span class="font-weight-light"><%= @product.subtitle %></span></h1>
             <h3><small>By <a href="#" data-toggle="modal" data-target="#author-modal"><%= @product.author %></a></small></h3>
@@ -12,7 +16,8 @@
 					    <script src="https://checkout.stripe.com/checkout.js"></script>
 					    <%= hidden_field_tag 'stripeToken' %>
 					    <%= hidden_field_tag 'stripeEmail' %>
-					    <%= hidden_field_tag 'amount', @product.price_in_cents %>  
+              <%= hidden_field_tag 'product_id', @product.id %>
+					    <%= hidden_field_tag 'amount', @product.price_in_cents %>            
 					    <button id="btn-buy" type="button" class="btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-ok"></span>I want this!</button>
 					    <script>
 						    var handler = StripeCheckout.configure({
@@ -52,6 +57,9 @@ Made by <a href="http://onemonth.com" target="_blank">
 </footer>
 
 <!-- Modal -->
+<%= image_tag('header-image.jpg', id: 'content-header-img', alt: 'Lean Growth Hacking') %>
+
+
 <div class="modal fade" id="author-modal">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'pages#home'
+  root 'products#index'
 
   #stripe
   resources :charges
 
   #route for showing products
-  resources :products, only: [:index]
+  resources :products, only: [:index, :show]
 
   #route for showing purchases
   resources :purchases, only: [:show]
